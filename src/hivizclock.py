@@ -26,6 +26,9 @@ class CenteredText(object):
 
 if __name__ == '__main__': 
     size = width, height = 1680, 1050
+    
+    print "Starting pygame..."
+
     screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
 
     pygame.init()
