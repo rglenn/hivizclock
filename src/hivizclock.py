@@ -34,10 +34,10 @@ if __name__ == '__main__':
     foreground = 255, 255, 255
     red = 255, 0, 0
 
-    dayFont = pygame.font.Font("fonts/ariblk.ttf", 192)
-    timeOfDayFont = pygame.font.Font("fonts/ariblk.ttf", 128)
-    clockFont = pygame.font.Font("fonts/ariblk.ttf", 300)
-    dateFont = pygame.font.Font("fonts/ariblk.ttf", 128)
+    dayFont = pygame.font.SysFont("sans", 192)
+    timeOfDayFont = pygame.font.SysFont("sans", 128)
+    clockFont = pygame.font.SysFont("sans", 300)
+    dateFont = pygame.font.SysFont("sans", 128)
 
     fpsClock = pygame.time.Clock()
 
