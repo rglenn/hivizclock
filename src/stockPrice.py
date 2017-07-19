@@ -31,7 +31,7 @@ class pitft :
         if disp_no:
             print "I'm running under X display = {0}".format(disp_no)
 
-        os.putenv('SDL_FBDEV', '/dev/fb1')
+        os.putenv('SDL_FBDEV', '/dev/fb0')
 
         # Select frame buffer driver
         # Make sure that SDL_VIDEODRIVER is set
