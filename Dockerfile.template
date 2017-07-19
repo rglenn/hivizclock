@@ -24,4 +24,6 @@ COPY . ./
 ENV INITSYSTEM on
 
 # main.py will run when container starts up on the device
-CMD ["python","src/hivizclock.py"]
+#CMD ["python","src/hivizclock.py"]
+
+CMD ["bash", "/usr/src/app/start.sh"]
