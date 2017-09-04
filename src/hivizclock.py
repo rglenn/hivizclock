@@ -26,21 +26,20 @@ class CenteredText(object):
 
 if __name__ == '__main__': 
     size = width, height = 1680, 1050
-    
-    print "Starting pygame..."
-
     screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
 
     pygame.init()
 
-    background = 0, 0, 0
-    foreground = 255, 255, 255
+    pygame.mouse.set_visible(False)
+
+    black = 0, 0, 0
+    white = 255, 255, 255
     red = 255, 0, 0
 
-    dayFont = pygame.font.SysFont("sans", 192)
-    timeOfDayFont = pygame.font.SysFont("sans", 128)
-    clockFont = pygame.font.SysFont("sans", 300)
-    dateFont = pygame.font.SysFont("sans", 128)
+    dayFont = pygame.font.Font("fonts/ariblk.ttf", 192)
+    timeOfDayFont = pygame.font.Font("fonts/ariblk.ttf", 128)
+    clockFont = pygame.font.Font("fonts/ariblk.ttf", 600)
+    dateFont = pygame.font.Font("fonts/ariblk.ttf", 128)
 
     fpsClock = pygame.time.Clock()
 
@@ -53,36 +52,48 @@ if __name__ == '__main__':
                 if event.key == pygame.K_ESCAPE:
                     sys.exit(0)
 
-        screen.fill(background)
-
         d = datetime.datetime.now()
 
         weekday = d.strftime("%A")
-        clock = d.strftime("%I:%M %p")
+        clock = d.strftime("%I:%M")
         clock = clock.lstrip("0").lower()
         date = d.strftime("%B %d, %Y")
         
         hour = int(d.strftime("%H"))
         if(hour < 6):
             timeOfDay = "Night"
+            background = black
+            foreground = white
         elif(hour < 12):
             timeOfDay = "Morning"
+            background = white
+            foreground = black
         elif(hour < 13):
             timeOfDay = "Noon"
+            background = white
+            foreground = black
         elif(hour < 17):
             timeOfDay = "Afternoon"
+            background = white
+            foreground = black
         elif(hour < 20):
             timeOfDay = "Evening"
+            background = white
+            foreground = black
         else:
             timeOfDay = "Night"
+            background = black
+            foreground = white
+
+        screen.fill(background)
 
         dayText = CenteredText(weekday, dayFont, (0, 50, 1680, 200), foreground)
         dayText.draw(screen)
 
         timeOfDayText = CenteredText(timeOfDay, timeOfDayFont, (0, 300, 1680, 100), foreground)
-        timeOfDayText.draw(screen)
+        #timeOfDayText.draw(screen)
 
-        clockText = CenteredText(clock, clockFont, (0, 450, 1680, 400), foreground)
+        clockText = CenteredText(clock, clockFont, (0, 300, 1680, 400), foreground)
         clockText.draw(screen)
 
         dateText = CenteredText(date, dateFont, (0, 850, 1680, 150), foreground)
